@@ -1,0 +1,47 @@
+{% comment %} TODO: Add smart pagination {% endcomment %}
+<style>
+  .pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .pagination a,
+  .pagination span {
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    text-decoration: none;
+    border-radius: 6px;
+    color: #333;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+
+  .pagination a:hover {
+    background-color: #ddd;
+  }
+
+  .pagination .current-page {
+    background-color: #ddd;
+    cursor: default;
+  }
+</style>
+
+<div class="pagination">
+  {% if photos.has_previous %}
+  <a href="?page=1">&laquo; Pierwsza</a>
+  <a href="?page={{ photos.previous_page_number }}">‹ Poprzednia</a>
+  {% endif %}
+
+  <span class="current-page"
+    >Strona {{ photos.number }} z {{ photos.paginator.num_pages }}</span
+  >
+
+  {% if photos.has_next %}
+  <a href="?page={{ photos.next_page_number }}">Następna ›</a>
+  <a href="?page={{ photos.paginator.num_pages }}">Ostatnia &raquo;</a>
+  {% endif %}
+</div>

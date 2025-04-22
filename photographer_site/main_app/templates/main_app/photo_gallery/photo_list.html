@@ -39,4 +39,5 @@
 {% else %}
 <p class="text-center text-muted fs-5 mt-4">Brak zdjęć do wyświetlenia.</p>
 {% endif %} 
+{% include "../pagination.html" with page=page_obj %}
 {% endblock %}

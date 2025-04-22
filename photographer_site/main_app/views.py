@@ -16,7 +16,7 @@ def main_page(request):
 
 def photo_list(request):
     post_list = Post.published.all()
-    paginator = Paginator(post_list, 6)
+    paginator = Paginator(post_list, 3)
     page_number = request.GET.get("page", 1)
 
     try:
