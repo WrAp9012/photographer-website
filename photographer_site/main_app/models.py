@@ -18,7 +18,9 @@ class Post(models.Model):
         PUBLISHED = "PB", "Published"
 
     title = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250, unique_for_date="publish", default="")
     body = models.TextField()
+    image = models.ImageField(upload_to="photo_images", default="")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="post")
     created = models.DateTimeField(default=timezone.now)
     publish = models.DateTimeField(auto_now_add=True)

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from main_app.models import Post
@@ -6,16 +6,30 @@ from main_app.models import Post
 # Create your views here.
 
 
-def post_list(request):
+def main_page(request):
+    photo_list = Post.published.all()
+
+    return render(
+        request, "main_app/photo_gallery/photo_main_site.html", {"photos": photo_list}
+    )
+
+
+def photo_list(request):
     post_list = Post.published.all()
-    paginator = Paginator(post_list, 3)
+    paginator = Paginator(post_list, 6)
     page_number = request.GET.get("page", 1)
 
     try:
-        post = paginator.page(page_number)
+        photos = paginator.page(page_number)
     except PageNotAnInteger:
-        post = paginator.page(1)
+        photos = paginator.page(1)
     except EmptyPage:
-        post = paginator.page(paginator.num_pages)
+        photos = paginator.page(paginator.num_pages)
 
-    return render(request, "main_app/post/list.html", {"post": post})
+    return render(request, "main_app/photo_gallery/photo_list.html", {"photos": photos})
+
+
+def photo_detail(request, id):
+    photo = get_object_or_404(Post, id=id, status=Post.Status.PUBLISHED)
+
+    return render(request, "main_app/photo_gallery/photo_detail.html", {"photo": photo})

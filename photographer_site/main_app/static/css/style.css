@@ -1,27 +1,44 @@
 /* static/css/style.css */
 
+/* === Ogólne === */
 body {
-  background: #fdfcfb;
+  background: #fefefe;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
+  line-height: 1.6;
+  padding-bottom: 60px; /* Dla miejsca na stopkę */
+}
+
+/* === Nagłówki === */
+h1, h2, h3 {
+  color: #2c3e50;
+  font-weight: 600;
 }
 
 h1 {
-  color: #3b3b3b;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
+/* === Karty zdjęć === */
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 1.2rem !important;
+  border-radius: 1rem !important;
+  overflow: hidden;
+  border: none;
+  background: #ffffff;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
 }
 
 .card-title {
   color: #1d3557;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .card-text {
@@ -30,11 +47,14 @@ h1 {
 
 .card-footer {
   background-color: #f8f9fa !important;
+  border-top: none;
 }
 
+/* === Przyciski === */
 .btn-outline-primary {
   border-color: #457b9d;
   color: #457b9d;
+  font-weight: 500;
 }
 
 .btn-outline-primary:hover {
@@ -42,16 +62,39 @@ h1 {
   color: #fff;
 }
 
+/* === Navbar === */
 .navbar {
-  background: linear-gradient(to right, #1d3557, #457b9d);
+  background: linear-gradient(to right, #2a2e45, #425177);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-brand {
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   letter-spacing: 1px;
+  color: #f8f9fa !important;
 }
 
+.nav-link {
+  font-weight: 500;
+  color: #e2e6ea !important;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+}
+
+/* === Stopka === */
 footer {
-  background-color: #1d3557 !important;
+  background-color: #2a2e45 !important;
+  color: #d1d1d1;
+  font-size: 0.9rem;
+  padding-top: 1rem;
+}
+
+/* === Responsywność === */
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2rem;
+  }
 }

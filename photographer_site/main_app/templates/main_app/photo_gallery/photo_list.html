@@ -1,6 +1,5 @@
 <!-- templates/photo_list.html -->
-{% extends "../base.html" %} {% block title %}📸 Galeria zdjęć{% endblock %} {%
-block content %}
+{% extends "../base.html" %} {% block title %}📸 Galeria zdjęć{% endblock %} {% block content %}
 <h1 class="mb-5 text-center fw-bold display-5">📷 Galeria zdjęć</h1>
 
 {% if photos %}
@@ -27,7 +26,7 @@ block content %}
           <span class="me-2">❤️ {{ photo.likes }}</span>
           <a
             class="btn btn-sm btn-outline-primary rounded-pill px-3"
-            href="{% url 'photo_detail' photo.id %}"
+            href="{% url 'main_app:photo_detail' photo.id %}"
           >
             Zobacz
           </a>
@@ -39,4 +38,5 @@ block content %}
 </div>
 {% else %}
 <p class="text-center text-muted fs-5 mt-4">Brak zdjęć do wyświetlenia.</p>
-{% endif %} {% endblock %}
+{% endif %} 
+{% endblock %}
