@@ -1,0 +1,42 @@
+<!-- templates/photo_list.html -->
+{% extends "../base.html" %} {% block title %}📸 Galeria zdjęć{% endblock %} {%
+block content %}
+<h1 class="mb-5 text-center fw-bold display-5">📷 Galeria zdjęć</h1>
+
+{% if photos %}
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+  {% for photo in photos %}
+  <div class="col">
+    <div class="card h-100 border-0 shadow rounded-4 overflow-hidden">
+      <img
+        src="{{ photo.image.url }}"
+        class="card-img-top img-fluid"
+        alt="{{ photo.title }}"
+      />
+      <div class="card-body">
+        <h5 class="card-title fw-semibold">{{ photo.title }}</h5>
+        <p class="card-text text-muted small">
+          {{ photo.description|truncatechars:120 }}
+        </p>
+      </div>
+      <div
+        class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center px-3 pb-3"
+      >
+        <small class="text-muted">{{ photo.created_at|date:"d M Y" }}</small>
+        <div>
+          <span class="me-2">❤️ {{ photo.likes }}</span>
+          <a
+            class="btn btn-sm btn-outline-primary rounded-pill px-3"
+            href="{% url 'photo_detail' photo.id %}"
+          >
+            Zobacz
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p class="text-center text-muted fs-5 mt-4">Brak zdjęć do wyświetlenia.</p>
+{% endif %} {% endblock %}
