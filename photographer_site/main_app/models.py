@@ -22,6 +22,7 @@ class Post(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to="photo_images", default="")
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="post")
+    liked_by = models.ManyToManyField(User, related_name="post_likes")
     created = models.DateTimeField(default=timezone.now)
     publish = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

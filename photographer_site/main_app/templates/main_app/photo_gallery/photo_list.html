@@ -23,7 +23,7 @@
       >
         <small class="text-muted">{{ photo.created_at|date:"d M Y" }}</small>
         <div>
-          <span class="me-2">❤️ {{ photo.likes }}</span>
+          <span class="fs-5">❤️ {{ photo.liked_by.count }}</span>
           <a
             class="btn btn-sm btn-outline-primary rounded-pill px-3"
             href="{% url 'main_app:photo_detail' photo.id %}"
