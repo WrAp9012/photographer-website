@@ -33,3 +33,11 @@ def photo_detail(request, id):
     photo = get_object_or_404(Post, id=id, status=Post.Status.PUBLISHED)
 
     return render(request, "main_app/photo_gallery/photo_detail.html", {"photo": photo})
+
+
+def contact(request):
+    return render(request, "main_app/photo_gallery/contact.html")
+
+
+def about_me(request):
+    return render(request, "main_app/photo_gallery/aboutme.html")

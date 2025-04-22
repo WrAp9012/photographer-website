@@ -18,29 +18,42 @@
     {% block extra_head %}{% endblock %}
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-      <div class="container">
-        <span class="navbar-brand fw-bold">📸 Moja Galeria</span>
+    <!-- Bootstrap 5 Navbar z burgerem -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'main_app:home' %}">MojaStrona</a>
+
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarContent"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link text-light" href="../base.html">Strona główna</a>
+              <a class="nav-link" href="{% url 'main_app:home' %}"
+                >Strona główna</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="#">Zdjęcia</a>
+              <a class="nav-link" href="{% url 'main_app:galery' %}">Galeria</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="#">Kontakt</a>
+              <a class="nav-link" href="{% url 'main_app:contact' %}"
+                >Kontakt</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'main_app:about_me' %}"
+                >O mnie</a
+              >
             </li>
           </ul>
         </div>
