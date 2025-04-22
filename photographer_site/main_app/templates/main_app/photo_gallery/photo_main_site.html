@@ -6,15 +6,15 @@
 <h1 class="mb-5 text-center fw-bold display-5">📷 Najlepsze zdjęcia</h1>
 
 {% if photos %}
-<div id="photoCarousel" class="carousel slide" data-bs-ride="carousel">
+<div id="photoCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
   <div class="carousel-inner">
     {% for photo in photos|slice:":3" %}
     <div class="carousel-item {% if forloop.first %}active{% endif %}">
       <div class="d-flex justify-content-center">
-        <div class="card h-100 border-0 shadow rounded-4 overflow-hidden" style="max-width: 600px;">
+        <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden" style="max-width: 500px; background-color: #f1f1f1;">
           <img
             src="{{ photo.image.url }}"
-            class="d-block w-100 img-fluid"
+            class="d-block img-fluid mx-auto carousel-photo-img"
             alt="{{ photo.title }}"
           />
           <div class="card-body">
@@ -42,15 +42,41 @@
   </div>
 
   <!-- Kontrolki -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+  <button class="carousel-control-prev custom-carousel-btn" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Poprzednie</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+  <button class="carousel-control-next custom-carousel-btn" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Następne</span>
   </button>
 </div>
+
+<style>
+  .custom-carousel-btn {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    filter: invert(1);
+    width: 30px;
+    height: 30px;
+  }
+
+  .carousel-photo-img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 1rem;
+  }
+</style>
+
 {% else %}
 <p class="text-center text-muted fs-5 mt-4">Brak zdjęć do wyświetlenia.</p>
 {% endif %}
