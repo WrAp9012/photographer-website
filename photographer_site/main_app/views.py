@@ -1,13 +1,12 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-
 from main_app.models import Post
 
 # Create your views here.
 
 
 def main_page(request):
-    photo_list = Post.published.all()
+    photo_list = Post.published.all().filter(featured=True)
 
     return render(
         request, "main_app/photo_gallery/photo_main_site.html", {"photos": photo_list}
@@ -27,6 +26,15 @@ def photo_list(request):
         photos = paginator.page(paginator.num_pages)
 
     return render(request, "main_app/photo_gallery/photo_list.html", {"photos": photos})
+
+
+def photo_filter(request, photo_category):
+    photo_category_list = Post.published.all().filter(category=photo_category)
+    return render(
+        request,
+        "main_app/photo_gallery/photo_category.html",
+        {"photos": photo_category_list, "category": photo_category},
+    )
 
 
 def photo_detail(request, id):

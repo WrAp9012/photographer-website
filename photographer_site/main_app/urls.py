@@ -8,6 +8,7 @@ urlpatterns: list[URLPattern] = [
     path("", views.main_page, name="home"),
     path("photo_list", views.photo_list, name="post_list"),
     path("<int:id>/", views.photo_detail, name="photo_detail"),
+    path("category/<str:photo_category>/", views.photo_filter, name="category"),
     path("galery/", views.photo_list, name="galery"),
     path("contact/", views.contact, name="contact"),
     path("about_me/", views.about_me, name="about_me"),

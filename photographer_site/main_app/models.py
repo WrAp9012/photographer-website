@@ -10,17 +10,27 @@ class PublishedManager(models.Manager):
         return super().get_queryset().filter(status=Post.Status.PUBLISHED)
 
 
-# TODO: Add Images field to database
 class Post(models.Model):
 
     class Status(models.TextChoices):
         DRAFT = "DF", "Draft"
         PUBLISHED = "PB", "Published"
 
+    class Category(models.TextChoices):
+        NONE_CATEGORY = "NoneCategory"
+        LANDSCAPE = "Landscape"
+        URBAN = "Urban"
+        MACRO = "Macro"
+        ARISTIC = "Artisctic"
+
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique_for_date="publish", default="")
     body = models.TextField()
     image = models.ImageField(upload_to="photo_images", default="")
+    featured = models.BooleanField(default=False)
+    category = models.CharField(
+        max_length=12, choices=Category.choices, default=Category.NONE_CATEGORY
+    )
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="post")
     liked_by = models.ManyToManyField(User, related_name="post_likes")
     created = models.DateTimeField(default=timezone.now)

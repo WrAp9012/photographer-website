@@ -1,6 +1,7 @@
-<!-- templates/photo_list.html -->
-{% extends "../base.html" %} {% block title %}📸 Galeria zdjęć{% endblock %} {% block content %}
-<h1 class="mb-5 text-center fw-bold display-5">📷 Galeria zdjęć</h1>
+{% extends "../base.html" %} {% block title %}📸 {{ kategoria }} - Galeria{%endblock %} {% block content %} {% if photos %} {% for photo in photos%}
+<h1 class="mb-5 text-center fw-bold display-5">
+  📂 Kategoria: {{ photo.category }}
+</h1>
 <div class="container text-center my-5">
   <h2 class="mb-4">Kategorie</h2>
   <div class="d-flex flex-wrap justify-content-center gap-3">
@@ -11,10 +12,7 @@
     <a href="{% url 'main_app:category' 'Artisctic' %}" class="btn btn-outline-danger rounded-pill px-4">Artistic</a>
   </div>
 </div>
-
-{% if photos %}
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-  {% for photo in photos %}
   <div class="col">
     <div class="card h-100 border-0 shadow rounded-4 overflow-hidden">
       <img
@@ -47,7 +45,5 @@
   {% endfor %}
 </div>
 {% else %}
-<p class="text-center text-muted fs-5 mt-4">Brak zdjęć do wyświetlenia.</p>
-{% endif %} 
-{% include "../pagination.html" with page=page_obj %}
-{% endblock %}
+<p class="text-center text-muted fs-5 mt-4">Brak zdjęć w tej kategorii.</p>
+{% endif %} {% include "../pagination.html" with page=page_obj %} {% endblock %}
