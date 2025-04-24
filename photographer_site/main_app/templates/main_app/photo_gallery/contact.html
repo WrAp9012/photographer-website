@@ -1,1 +1,57 @@
-{% extends "../base.html" %}
+{% extends "../base.html" %} {% block title %}Kontakt - Galeria{% endblock %} {%block content %}
+<div class="container py-5">
+  <div class="row text-center mb-5">
+    <div class="col">
+      <h2>Kontakt</h2>
+      <p class="text-muted">
+        Masz pytania, chcesz zarezerwować sesję lub po prostu porozmawiać?
+        Skontaktuj się ze mną!
+      </p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <ul class="list-group list-group-flush mb-4">
+        <li class="list-group-item">
+          <strong>Email:</strong>
+          <a href="mailto:kontakt@fotograf.pl">kontakt@fotograf.pl</a>
+        </li>
+        <li class="list-group-item">
+          <strong>Telefon:</strong>
+          <a href="tel:+48123456789">+48 123 456 789</a>
+        </li>
+        <li class="list-group-item">
+          <strong>Instagram:</strong>
+          <a href="https://instagram.com/twoj_profil" target="_blank"
+            >@twoj_profil</a
+          >
+        </li>
+        <li class="list-group-item">
+          <strong>Facebook:</strong>
+          <a href="https://facebook.com/twoj_profil" target="_blank"
+            >facebook.com/twoj_profil</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+      <h5 class="text-center mb-3">Znajdziesz mnie tutaj:</h5>
+      <div class="ratio ratio-16x9">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.5084032373514!2d21.01222831580099!3d52.22967597975768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc6698b1aa3f%3A0x69565f5e8aa2f203!2sWarszawa!5e0!3m2!1spl!2spl!4v1615151127151!5m2!1spl!2spl"
+          width="100%"
+          height="100%"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+        >
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
