@@ -1,34 +1,52 @@
-{% extends "../base.html" %} {% block title %}O mnie - Galeria{% endblock %} {%block content %}
+{% extends "../base.html" %}
+{% block title %}O mnie - Galeria{% endblock %}
+{% block content %}
+
 <div class="container py-5">
-  <div class="row justify-content-center text-center">
+  <!-- Profil -->
+  <div class="row justify-content-center text-center mb-5">
     <div class="col-md-4">
       <img
         src="{{ photo.image.url }}"
-        class="rounded-circle img-fluid shadow mb-3"
+        class="rounded-circle img-fluid shadow mb-4 profile-img"
         alt="Profilowe"
       />
-      <h2 class="mt-3">{{ photo.author }}</h2>
-      <p class="text-muted">Fotograf pasjonat | Portfolio online</p>
+      <h2 class="fw-bold">{{ photo.author }}</h2>
+      <p class="text-muted fst-italic">Fotograf pasjonat | Portfolio online</p>
     </div>
   </div>
+
   <hr class="my-5" />
 
+  <!-- Tekst o mnie -->
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <h3>O mnie</h3>
-      <p class="lead">
-        Cześć! Nazywam się {{ photo.author }} i jestem pasjonatem fotografii.
-        Specjalizuję się w zdjęciach portretowych, krajobrazowych i
-        artystycznych. Moją misją jest uchwycenie emocji, chwil i historii
-        ukrytych w jednym ujęciu.
+      <h3 class="mb-4 text-center">👋 Cześć, jestem {{ photo.author }}</h3>
+      <p class="lead text-justify">
+        Specjalizuję się w zdjęciach <strong>portretowych</strong>,
+        <strong>krajobrazowych</strong> i <strong>artystycznych</strong>.
+        Moją misją jest uchwycenie emocji, chwil i historii ukrytych w jednym ujęciu.
       </p>
       <p>
-        Przez ostatnie lata brałem udział w wielu projektach, wystawach i
-        sesjach, które nauczyły mnie patrzeć na świat z różnych perspektyw.
-        Fotografia to dla mnie coś więcej niż zawód – to sposób na wyrażanie
-        siebie.
+        Przez ostatnie lata brałem udział w wielu projektach, wystawach i sesjach,
+        które nauczyły mnie patrzeć na świat z różnych perspektyw.
+        Fotografia to dla mnie coś więcej niż zawód – to sposób na wyrażanie siebie.
       </p>
+      <p class="fst-italic text-muted text-end">"Każde zdjęcie opowiada historię."</p>
     </div>
   </div>
 </div>
+
+<style>
+  .profile-img {
+    transition: transform 0.4s ease;
+  }
+  .profile-img:hover {
+    transform: scale(1.05);
+  }
+  .text-justify {
+    text-align: justify;
+  }
+</style>
+
 {% endblock %}

@@ -1,45 +1,44 @@
-<!-- templates/photo_list.html -->
-{% extends "../base.html" %} {% block title %}📸 Galeria zdjęć{% endblock %} {% block content %}
+{% extends "../base.html" %}
+{% block title %}📸 Galeria zdjęć{% endblock %}
+{% block content %}
+
 <h1 class="mb-5 text-center fw-bold display-5">📷 Galeria zdjęć</h1>
+
+<!-- Kategorie -->
 <div class="container text-center my-5">
-  <h2 class="mb-4">Kategorie</h2>
+  <h2 class="mb-4 fw-semibold">Kategorie</h2>
   <div class="d-flex flex-wrap justify-content-center gap-3">
-    <a href="{% url 'main_app:category' 'Portrait' %}" class="btn btn-outline-primary rounded-pill px-4">Portrait</a>
-    <a href="{% url 'main_app:category' 'Landscape' %}" class="btn btn-outline-success rounded-pill px-4">Landscape</a>
-    <a href="{% url 'main_app:category' 'Urban' %}" class="btn btn-outline-warning rounded-pill px-4">Urban</a>
-    <a href="{% url 'main_app:category' 'Macro' %}" class="btn btn-outline-info rounded-pill px-4">Macro</a>
-    <a href="{% url 'main_app:category' 'Artisctic' %}" class="btn btn-outline-danger rounded-pill px-4">Artistic</a>
+    <a href="{% url 'main_app:category' 'Portrait' %}" class="btn btn-outline-primary rounded-pill px-4 py-2">Portrait</a>
+    <a href="{% url 'main_app:category' 'Landscape' %}" class="btn btn-outline-success rounded-pill px-4 py-2">Landscape</a>
+    <a href="{% url 'main_app:category' 'Urban' %}" class="btn btn-outline-warning rounded-pill px-4 py-2">Urban</a>
+    <a href="{% url 'main_app:category' 'Macro' %}" class="btn btn-outline-info rounded-pill px-4 py-2">Macro</a>
+    <a href="{% url 'main_app:category' 'Artisctic' %}" class="btn btn-outline-danger rounded-pill px-4 py-2">Artistic</a>
   </div>
 </div>
 
+<!-- Galeria -->
 {% if photos %}
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
   {% for photo in photos %}
   <div class="col">
-    <div class="card h-100 border-0 shadow rounded-4 overflow-hidden">
-      <img
-        src="{{ photo.image.url }}"
-        class="card-img-top img-fluid"
-        alt="{{ photo.title }}"
-      />
+    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-shadow transition">
+      <a href="{{ photo.image.url }}" class="glightbox" data-gallery="galeria" data-title="{{ photo.title }}">
+        <img
+          src="{{ photo.image.url }}"
+          class="card-img-top img-fluid"
+          alt="{{ photo.title }}"
+          loading="lazy"
+        />
+      </a>
       <div class="card-body">
-        <h5 class="card-title fw-semibold">{{ photo.title }}</h5>
-        <p class="card-text text-muted small">
-          {{ photo.description|truncatechars:120 }}
-        </p>
+        <h5 class="card-title fw-semibold text-center">{{ photo.title }}</h5>
+        <p class="card-text text-muted small text-center">{{ photo.description|truncatechars:120 }}</p>
       </div>
-      <div
-        class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center px-3 pb-3"
-      >
+      <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center px-3 pb-3">
         <small class="text-muted">{{ photo.created_at|date:"d M Y" }}</small>
         <div>
-          <span class="fs-5">❤️ {{ photo.liked_by.count }}</span>
-          <a
-            class="btn btn-sm btn-outline-primary rounded-pill px-3"
-            href="{% url 'main_app:photo_detail' photo.id %}"
-          >
-            Zobacz
-          </a>
+          <span class="fs-5 me-2">❤️ {{ photo.liked_by.count }}</span>
+          <a class="btn btn-sm btn-outline-primary rounded-pill px-3" href="{% url 'main_app:photo_detail' photo.id %}">Zobacz</a>
         </div>
       </div>
     </div>
@@ -48,6 +47,7 @@
 </div>
 {% else %}
 <p class="text-center text-muted fs-5 mt-4">Brak zdjęć do wyświetlenia.</p>
-{% endif %} 
+{% endif %}
+
 {% include "../pagination.html" with page=page_obj %}
 {% endblock %}

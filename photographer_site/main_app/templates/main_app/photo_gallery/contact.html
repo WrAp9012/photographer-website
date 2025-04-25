@@ -1,57 +1,60 @@
-{% extends "../base.html" %} {% block title %}Kontakt - Galeria{% endblock %} {%block content %}
+{% extends "../base.html" %}
+{% block title %}Kontakt - Galeria{% endblock %}
+{% block content %}
+
 <div class="container py-5">
+  <!-- Nagłówek -->
   <div class="row text-center mb-5">
     <div class="col">
-      <h2>Kontakt</h2>
+      <h2 class="fw-bold display-6">📞 Skontaktuj się ze mną</h2>
       <p class="text-muted">
         Masz pytania, chcesz zarezerwować sesję lub po prostu porozmawiać?
-        Skontaktuj się ze mną!
       </p>
     </div>
   </div>
 
-  <div class="row justify-content-center">
+  <!-- Dane kontaktowe -->
+  <div class="row justify-content-center mb-5">
     <div class="col-md-6">
-      <ul class="list-group list-group-flush mb-4">
-        <li class="list-group-item">
-          <strong>Email:</strong>
-          <a href="mailto:kontakt@fotograf.pl">kontakt@fotograf.pl</a>
-        </li>
-        <li class="list-group-item">
-          <strong>Telefon:</strong>
-          <a href="tel:+48123456789">+48 123 456 789</a>
-        </li>
-        <li class="list-group-item">
-          <strong>Instagram:</strong>
-          <a href="https://instagram.com/twoj_profil" target="_blank"
-            >@twoj_profil</a
-          >
-        </li>
-        <li class="list-group-item">
-          <strong>Facebook:</strong>
-          <a href="https://facebook.com/twoj_profil" target="_blank"
-            >facebook.com/twoj_profil</a
-          >
-        </li>
-      </ul>
+      <div class="bg-light rounded-4 shadow-sm p-4">
+        <ul class="list-unstyled fs-5">
+          <li class="mb-3">
+            <i class="bi bi-envelope me-2 text-primary"></i>
+            <strong>Email:</strong>
+            <a href="mailto:kontakt@fotograf.pl" class="text-decoration-none">kontakt@fotograf.pl</a>
+          </li>
+          <li class="mb-3">
+            <i class="bi bi-telephone me-2 text-success"></i>
+            <strong>Telefon:</strong>
+            <a href="tel:+48123456789" class="text-decoration-none">+48 123 456 789</a>
+          </li>
+          <li class="mb-3">
+            <i class="bi bi-instagram me-2 text-danger"></i>
+            <strong>Instagram:</strong>
+            <a href="https://instagram.com/twoj_profil" class="text-decoration-none" target="_blank">@twoj_profil</a>
+          </li>
+          <li>
+            <i class="bi bi-facebook me-2 text-primary"></i>
+            <strong>Facebook:</strong>
+            <a href="https://facebook.com/twoj_profil" class="text-decoration-none" target="_blank">facebook.com/twoj_profil</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="row justify-content-center mt-4">
+  <!-- Mapa -->
+  <div class="row justify-content-center">
     <div class="col-md-8">
-      <h5 class="text-center mb-3">Znajdziesz mnie tutaj:</h5>
-      <div class="ratio ratio-16x9">
+      <h5 class="text-center mb-3">📍 Znajdziesz mnie tutaj</h5>
+      <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-sm">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.5084032373514!2d21.01222831580099!3d52.22967597975768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc6698b1aa3f%3A0x69565f5e8aa2f203!2sWarszawa!5e0!3m2!1spl!2spl!4v1615151127151!5m2!1spl!2spl"
-          width="100%"
-          height="100%"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-        >
+          width="100%" height="100%" style="border: 0;" allowfullscreen="" loading="lazy">
         </iframe>
       </div>
     </div>
   </div>
 </div>
+
 {% endblock %}
